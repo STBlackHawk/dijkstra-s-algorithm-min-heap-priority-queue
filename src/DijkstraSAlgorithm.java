@@ -1,17 +1,30 @@
 
-public class Main {
+public class DijkstraSAlgorithm {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+
+
+        int s = 1;
+        Graph graph = new Graph(s);
+        for (int i = 0; i < s; i++) {
+
+        }
+
+
+
+
     }
+
+
 
 
     //first we will have graphs which have nodes and size, add node for adding nodes and also a  min-heap priority queue
     public static class Graph {
 
-        //creating vertices
+        //creating an object tye for vertices
         public class Vertex {
-            int dist;
+            float dist;
             int Number;
             Adjacent adj;
             int Indegree;
@@ -43,9 +56,9 @@ public class Main {
         public class Adjacent {
             int index;
             Adjacent next;
-            int weight;
+            float weight;
 
-            Adjacent(int i, int w, Adjacent n) {
+            Adjacent(int i, float w, Adjacent n) {
                 this.index = i;
                 this.weight = w;
                 this.next = n;
@@ -53,6 +66,7 @@ public class Main {
             }
 
         }
+
 
         //adjacency list of the graph
         Vertex[] vertices;
@@ -63,11 +77,17 @@ public class Main {
         //index of each vertex
         int idx;
 
+
         //graph constructor
         public Graph(int size) {
             this.size = size;
             vertices = new Vertex[size];
         }
+
+
+        int[] path = new int[size];
+
+
 
         //Creating Vertices
 
@@ -76,7 +96,7 @@ public class Main {
 
         }
 
-        public void addEdge(int src, int dst, int W) {
+        public void addEdge(int src, int dst, float W) {
             int srcIndx = src;
             int dstIndx = dst;
             vertices[srcIndx].adj = new Adjacent(dstIndx, W, vertices[srcIndx].adj);
@@ -85,6 +105,10 @@ public class Main {
 
 
         public void shortestpath(int src){
+            for (int j = 0; j < size; j++ ){
+                path[j] = j;
+            }
+
             dikjstraAlgorithm(vertices[src]);
             for (int i = 0; i<size; i++){
                 System.out.println("the shortest path from source"+src+"is");
@@ -223,7 +247,10 @@ public class Main {
                     }
                     if (vertices[temp.index].dist > u.dist +temp.weight){
                         vertices[temp.index].dist = u.dist +temp.weight;
+                        path[vertices[temp.index].Number] = u.Number;
+
                         heap.heapifyUP(vertices[temp.index]);
+
                     }
                     temp = temp.next;
 
@@ -232,10 +259,6 @@ public class Main {
             }
         }
 
-
-
     }
-
-
 
 }
