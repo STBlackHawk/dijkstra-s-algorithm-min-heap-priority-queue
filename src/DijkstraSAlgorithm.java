@@ -54,9 +54,6 @@ public class Main {
 
         }
 
-
-
-
         //adjacency list of the graph
         Vertex[] vertices;
 
@@ -228,16 +225,12 @@ public class Main {
                         vertices[temp.index].dist = u.dist +temp.weight;
                         heap.heapifyUP(vertices[temp.index]);
                     }
-                    temp= temp.next;
+                    temp = temp.next;
 
                 }
 
             }
         }
-
-
-
-
 
 
 
