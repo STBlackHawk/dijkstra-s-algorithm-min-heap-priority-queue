@@ -108,10 +108,16 @@ public class DijkstraSAlgorithm {
             for (int j = 0; j < size; j++ ){
                 path[j] = j;
             }
-
             dikjstraAlgorithm(vertices[src]);
             for (int i = 0; i<size; i++){
-                System.out.println("the shortest path from source"+src+"is");
+                System.out.println("the shortest path of the vertex"+vertices[i].Number+ "from source:"+src+"is"
+                + vertices[i].dist);
+                System.out.println("the rout for the shortest path is");
+                while (path[i] != i);
+                {
+                    System.out.print(path[i]);
+                }
+                System.out.print(src);
             }
 
         }

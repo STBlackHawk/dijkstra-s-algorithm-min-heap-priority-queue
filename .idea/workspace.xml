@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="768786fc-9f39-4c8f-a5df-aa9aa11d9a47" name="Default Changelist" comment="">
+<<<<<<< Updated upstream
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DijkstraSAlgorithm.java" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,6 +53,7 @@
     <session id="144182854">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -75,8 +80,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DijkstraSAlgorithm.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="586">
               <caret line="250" lean-forward="true" selection-start-line="250" selection-end-line="250" />
+=======
+            <state relative-caret-position="-3738">
+              <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+>>>>>>> Stashed changes
               <folding>
                 <element signature="e#5567#5568#0" expanded="true" />
                 <element signature="e#5614#5615#0" expanded="true" />
@@ -124,7 +134,11 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+<<<<<<< Updated upstream
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542168061016" />
+=======
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542161748605" />
+>>>>>>> Stashed changes
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
   </component>
   <component name="RunDashboard">
@@ -163,12 +177,16 @@
       <updated>1541789247427</updated>
       <workItem from="1541789254094" duration="466000" />
       <workItem from="1542062124295" duration="3694000" />
-      <workItem from="1542127017878" duration="8428000" />
+      <workItem from="1542127017878" duration="9101000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="16665000" />
+=======
+    <option name="totallyTimeSpent" value="13261000" />
+>>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -215,8 +233,13 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/DijkstraSAlgorithm.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="586">
           <caret line="250" lean-forward="true" selection-start-line="250" selection-end-line="250" />
+=======
+        <state relative-caret-position="-3738">
+          <caret line="46" lean-forward="true" selection-start-line="46" selection-end-line="46" />
+>>>>>>> Stashed changes
           <folding>
             <element signature="e#5567#5568#0" expanded="true" />
             <element signature="e#5614#5615#0" expanded="true" />
