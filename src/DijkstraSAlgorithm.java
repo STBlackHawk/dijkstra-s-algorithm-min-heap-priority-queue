@@ -1,15 +1,38 @@
 
+import java.util.Scanner;
+import java.util.Stack;
+
 public class DijkstraSAlgorithm {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
 
 
-        int s = 1;
+
+        //Creating scanner for reading from standard input
+        Scanner in = new Scanner(System.in);
+
+        //reading input and assigning them to the number of vertecies and edges
+        int s = in.nextInt();
+        int e = in.nextInt();
+
         Graph graph = new Graph(s);
         for (int i = 0; i < s; i++) {
 
         }
+
+        while (in.hasNextLine()){
+           graph.addEdge(in.nextInt(),
+                   in.nextInt(),in.nextFloat());
+
+        }
+
+
+
+       graph.shortestpath(0);
+
+
+
+
 
 
 
@@ -38,7 +61,7 @@ public class DijkstraSAlgorithm {
 
             }
 
-
+            //Comparison function to compare vertecies min distace from source
             public int comparison(Vertex v) {
                 if (v.dist == this.dist) return 0;
                 if (v.dist < this.dist) return 1;
@@ -47,12 +70,13 @@ public class DijkstraSAlgorithm {
 
         }
 
+        //Status for each edge wether or no they have been visited or they are in our min heap queue
         public enum Status {
 
             NEW, OLD, INQUEUE
         }
 
-
+        //adjacent object for adjacency list which is a linked list and points to the next neighbour
         public class Adjacent {
             int index;
             Adjacent next;
@@ -85,6 +109,7 @@ public class DijkstraSAlgorithm {
         }
 
 
+        //an array using quick find technique for finding the rout of the shortest path from source to each node
         int[] path = new int[size];
 
 
@@ -95,7 +120,7 @@ public class DijkstraSAlgorithm {
             vertices[idx++] = new Vertex(name);
 
         }
-
+        //addEdge function for adding edges in the graph
         public void addEdge(int src, int dst, float W) {
             int srcIndx = src;
             int dstIndx = dst;
@@ -103,11 +128,13 @@ public class DijkstraSAlgorithm {
             vertices[dst].Indegree++;
         }
 
-
+        //finding the shortest path in the graph
         public void shortestpath(int src){
             for (int j = 0; j < size; j++ ){
                 path[j] = j;
             }
+            Stack<Integer> S = new Stack<>();
+
             dikjstraAlgorithm(vertices[src]);
             for (int i = 0; i<size; i++){
                 System.out.println("the shortest path of the vertex"+vertices[i].Number+ "from source:"+src+"is"
@@ -115,14 +142,20 @@ public class DijkstraSAlgorithm {
                 System.out.println("the rout for the shortest path is");
                 while (path[i] != i);
                 {
-                    System.out.print(path[i]);
+                    S.push(path[i]);
                 }
-                System.out.print(src);
+
+                S.push(src);
+                while (!S.empty()){
+                    System.out.print(S.pop());
+                }
+
+
             }
 
         }
 
-        // Creating Heap Data structure
+        // Creating Heap Data structure and its function using heapify functions
         public static class minHeap {
             private Vertex[] heap;
             private int size;
@@ -235,7 +268,7 @@ public class DijkstraSAlgorithm {
 
         }
 
-
+        //implementation of the dikjstraAlgorithm
         public void dikjstraAlgorithm(Vertex src){
             minHeap heap = new minHeap(size);
             heap.add(src);
