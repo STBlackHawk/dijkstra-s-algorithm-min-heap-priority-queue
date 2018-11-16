@@ -10,7 +10,6 @@ public class DijkstraSAlgorithm {
         Scanner in = new Scanner(System.in);
 
         //reading input and assigning them to the number of vertecies and edges
-
         int s = in.nextInt();
         int e = in.nextInt();
         int srce;
@@ -70,13 +69,13 @@ public class DijkstraSAlgorithm {
             int Number;
             Adjacent adj;
             int Indegree;
-//            Status sts;
+
 
 
             public Vertex(int No) {
                 this.Number = No;
                 this.dist = Integer.MAX_VALUE;
-//                sts = Status.NEW;
+
 
             }
 
@@ -88,12 +87,6 @@ public class DijkstraSAlgorithm {
             }
 
         }
-
-        //Status for each edge wether or no they have been visited or they are in our min heap queue
-//        public enum Status {
-//
-//            NEW, OLD, INQUEUE
-//        }
 
         //adjacent object for adjacency list which is a linked list and points to the next neighbour
         public class Adjacent {
@@ -150,7 +143,6 @@ public class DijkstraSAlgorithm {
         public void shortestpath(int src){
 
             int V;
-            int Source = src+1;
             int k;
             int r;
             path = new int[size];
@@ -309,8 +301,6 @@ public class DijkstraSAlgorithm {
         //implementation of the dikjstraAlgorithm
         public void dikjstraAlgorithm(Vertex src){
             minHeap heap = new minHeap(size);
-//            heap.add(src);
-//            src.sts = Status.INQUEUE;
             src.dist = 0;
 
             for (int i = 0; i< size; i++){
@@ -320,13 +310,9 @@ public class DijkstraSAlgorithm {
 
             while (!heap.isEmpty()){
                 Vertex u = heap.Heap_Extract_mean();
-//                u.sts = Status.OLD;
                 Adjacent temp = u.adj;
                 while(temp != null){
-//                    if(vertices[temp.index].sts == Status.NEW ){
-//                        heap.add(vertices[temp.index]);
-//                        vertices[temp.index].sts = Status.INQUEUE;
-//                    }
+
                     if (vertices[temp.index].dist > u.dist +temp.weight){
                         vertices[temp.index].dist = u.dist +temp.weight;
                         path[vertices[temp.index].Number] = u.Number;
