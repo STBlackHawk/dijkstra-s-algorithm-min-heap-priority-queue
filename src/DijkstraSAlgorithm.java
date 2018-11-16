@@ -70,13 +70,13 @@ public class DijkstraSAlgorithm {
             int Number;
             Adjacent adj;
             int Indegree;
-            Status sts;
+//            Status sts;
 
 
             public Vertex(int No) {
                 this.Number = No;
                 this.dist = Integer.MAX_VALUE;
-                sts = Status.NEW;
+//                sts = Status.NEW;
 
             }
 
@@ -90,10 +90,10 @@ public class DijkstraSAlgorithm {
         }
 
         //Status for each edge wether or no they have been visited or they are in our min heap queue
-        public enum Status {
-
-            NEW, OLD, INQUEUE
-        }
+//        public enum Status {
+//
+//            NEW, OLD, INQUEUE
+//        }
 
         //adjacent object for adjacency list which is a linked list and points to the next neighbour
         public class Adjacent {
@@ -290,7 +290,7 @@ public class DijkstraSAlgorithm {
             }
 
 
-            public Vertex remove() {
+            public Vertex Heap_Extract_mean() {
                 Vertex v = heap[0];
                 swap(0, idx - 1);
                 heap[idx - 1] = null;
@@ -309,19 +309,24 @@ public class DijkstraSAlgorithm {
         //implementation of the dikjstraAlgorithm
         public void dikjstraAlgorithm(Vertex src){
             minHeap heap = new minHeap(size);
-            heap.add(src);
-            src.sts = Status.INQUEUE;
+//            heap.add(src);
+//            src.sts = Status.INQUEUE;
             src.dist = 0;
 
+            for (int i = 0; i< size; i++){
+                heap.add(vertices[i]);
+
+            }
+
             while (!heap.isEmpty()){
-                Vertex u = heap.remove();
-                u.sts = Status.OLD;
+                Vertex u = heap.Heap_Extract_mean();
+//                u.sts = Status.OLD;
                 Adjacent temp = u.adj;
                 while(temp != null){
-                    if(vertices[temp.index].sts == Status.NEW ){
-                        heap.add(vertices[temp.index]);
-                        vertices[temp.index].sts = Status.INQUEUE;
-                    }
+//                    if(vertices[temp.index].sts == Status.NEW ){
+//                        heap.add(vertices[temp.index]);
+//                        vertices[temp.index].sts = Status.INQUEUE;
+//                    }
                     if (vertices[temp.index].dist > u.dist +temp.weight){
                         vertices[temp.index].dist = u.dist +temp.weight;
                         path[vertices[temp.index].Number] = u.Number;
