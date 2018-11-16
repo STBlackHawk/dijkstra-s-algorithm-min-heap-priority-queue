@@ -6,35 +6,54 @@ public class DijkstraSAlgorithm {
 
     public static void main(String[] args) {
 
-
-
         //Creating scanner for reading from standard input
         Scanner in = new Scanner(System.in);
 
         //reading input and assigning them to the number of vertecies and edges
+
         int s = in.nextInt();
         int e = in.nextInt();
+        int srce;
+        int dste;
+        double wedg;
+
+        try{
+            if (s < 0 || e < 0 ) throw new IllegalArgumentException();
+        }catch(IllegalArgumentException p){
+
+            System.out.print("\nthe number of vertices or edges cannot be negative ");
+            System.exit(1);
+        }
 
         Graph graph = new Graph(s);
         for (int i = 0; i < s; i++) {
+            graph.addVx(i);
 
         }
 
         while (in.hasNextLine()){
-           graph.addEdge(in.nextInt(),
-                   in.nextInt(),in.nextFloat());
+            srce = in.nextInt();
+            dste = in.nextInt();
+            wedg = in.nextDouble();
+
+            try{
+                if (srce < 1 || srce > s || dste < 1 || wedg < 0) throw new IllegalArgumentException();
+            }catch(IllegalArgumentException p){
+
+                System.out.println("\nThere cannot be a Vertex with the name less than 1 or more than "+ s +" or a negative weight in this graph");
+                System.exit(1);
+
+            }
+
+
+            graph.addEdge(srce-1  ,
+                    dste-1,wedg);
 
         }
 
 
 
-       graph.shortestpath(0);
-
-
-
-
-
-
+        graph.shortestpath(0);
 
 
     }
@@ -47,7 +66,7 @@ public class DijkstraSAlgorithm {
 
         //creating an object tye for vertices
         public class Vertex {
-            float dist;
+            double dist;
             int Number;
             Adjacent adj;
             int Indegree;
@@ -80,9 +99,9 @@ public class DijkstraSAlgorithm {
         public class Adjacent {
             int index;
             Adjacent next;
-            float weight;
+            double weight;
 
-            Adjacent(int i, float w, Adjacent n) {
+            Adjacent(int i, double w, Adjacent n) {
                 this.index = i;
                 this.weight = w;
                 this.next = n;
@@ -110,18 +129,17 @@ public class DijkstraSAlgorithm {
 
 
         //an array using quick find technique for finding the rout of the shortest path from source to each node
-        int[] path = new int[size];
+        int[] path;
 
 
 
         //Creating Vertices
-
         public void addVx(int name) {
             vertices[idx++] = new Vertex(name);
-
         }
+
         //addEdge function for adding edges in the graph
-        public void addEdge(int src, int dst, float W) {
+        public void addEdge(int src, int dst, double W) {
             int srcIndx = src;
             int dstIndx = dst;
             vertices[srcIndx].adj = new Adjacent(dstIndx, W, vertices[srcIndx].adj);
@@ -130,26 +148,46 @@ public class DijkstraSAlgorithm {
 
         //finding the shortest path in the graph
         public void shortestpath(int src){
+
+            int V;
+            int Source = src+1;
+            int k;
+            int r;
+            path = new int[size];
             for (int j = 0; j < size; j++ ){
                 path[j] = j;
             }
             Stack<Integer> S = new Stack<>();
 
             dikjstraAlgorithm(vertices[src]);
-            for (int i = 0; i<size; i++){
-                System.out.println("the shortest path of the vertex"+vertices[i].Number+ "from source:"+src+"is"
-                + vertices[i].dist);
-                System.out.println("the rout for the shortest path is");
-                while (path[i] != i);
-                {
-                    S.push(path[i]);
-                }
+            for (int i = 1; i < size; i++){
 
-                S.push(src);
-                while (!S.empty()){
-                    System.out.print(S.pop());
-                }
+                V = vertices[i].Number + 1;
 
+                if(vertices[i].dist == Integer.MAX_VALUE){
+                    System.out.println("\nThere is no path from the source to vertex " +V+ " in this directed graph");
+
+                } else {
+
+
+
+                    System.out.println("\n" + "\nVertex " + V + "\n"+ "Shortest Distance is "
+                            + vertices[i].dist);
+                    System.out.print("Shortest path is ");
+
+                    r = i;
+                    while (path[r] != r) {
+                        S.push(path[r]);
+                        r = path[r];
+                    }
+
+                    while (!S.empty()) {
+                        k = S.pop() + 1;
+                        System.out.print(k + " ");
+
+                    }
+                    System.out.println(i + 1);
+                }
 
             }
 
@@ -180,7 +218,7 @@ public class DijkstraSAlgorithm {
             public void swap(int idx1, int idx2) {
                 Vertex current = heap[idx1];
                 heap[idx1] = heap[idx2];
-                heap[idx1] = current;
+                heap[idx2] = current;
             }
 
             public void heapifyUp(int index) {
@@ -276,11 +314,11 @@ public class DijkstraSAlgorithm {
             src.dist = 0;
 
             while (!heap.isEmpty()){
-                Vertex u= heap.remove();
+                Vertex u = heap.remove();
                 u.sts = Status.OLD;
                 Adjacent temp = u.adj;
                 while(temp != null){
-                    if(vertices[temp.index].sts == Status.NEW){
+                    if(vertices[temp.index].sts == Status.NEW ){
                         heap.add(vertices[temp.index]);
                         vertices[temp.index].sts = Status.INQUEUE;
                     }
@@ -288,9 +326,11 @@ public class DijkstraSAlgorithm {
                         vertices[temp.index].dist = u.dist +temp.weight;
                         path[vertices[temp.index].Number] = u.Number;
 
+
                         heap.heapifyUP(vertices[temp.index]);
 
                     }
+
                     temp = temp.next;
 
                 }
